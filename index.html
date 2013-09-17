@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/panel.css" type="text/css"/>
   </head>
   <body>
+
+    <div class="app__panel">
+      <div class="app__panel-sub">
+        <div class="app__panel-left">
+
+        </div>
+        <div class="app__panel-right">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="app__panel">
+      <div class="app__panel-sub">
+        <div class="panel__knob-wrapper">
+          <h3 class="panel__knob-name">Bass</h3>
+          <input id="bass" value="0" type="text" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+        </div>
+        <div class="panel__knob-wrapper">
+          <h3 class="panel__knob-name">Treble</h3>
+          <input id="treble" type="text" value="20" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+        </div>
+        <div class="panel__knob-wrapper">
+          <h3 id="gain" class="panel__knob-name">Gain</h3>
+          <input type="text" value="20" data-max="100" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+        </div>
+        <div class="panel__knob-wrapper">
+          <h3 id="distortion" class="panel__knob-name">Distortion</h3>
+          <input type="text" value="0" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+        </div>
+        <div class="panel__knob-wrapper">
+          <h3 class="panel__knob-name">Reverb</h3>
+          <input id="reverb" value="20" type="text" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="components/jquery-knob/js/jquery.knob.js"></script>
+
     <script type="text/javascript" src="scripts/muse.js"></script>
+
     <script type="text/javascript">
-     navigator.webkitGetUserMedia({audio: true}, '');
+     // navigator.webkitGetUserMedia({audio: true}, '');
+     Muse.Player.init();
     </script>
   </body>
 </html>
