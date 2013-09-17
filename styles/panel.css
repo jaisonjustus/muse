@@ -9,6 +9,9 @@ body  {
   width: 100%;
   height: auto;
   overflow: hidden;
+}
+
+.color {
   background-color: #34495e;
 }
 
