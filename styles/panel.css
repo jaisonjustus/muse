@@ -1,0 +1,65 @@
+body  {
+  margin: 0;
+  padding: 0;
+  border:0;
+  background-color: #2c3e50;
+}
+
+.app__panel {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #34495e;
+}
+
+.app__panel-sub  {
+  width: 1000px;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+}
+
+.app__panel-left  {
+  width: 460px;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+  float: left;
+  padding: 20px;
+  background-color: #e74c3c;
+}
+
+.app__panel-right  {
+  width: 460px;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+  float: right;
+  padding: 20px;
+  background-color: #c0392b;
+}
+
+.panel  {
+  width: 100%;
+  height: auto
+  overflow: hidden;
+  margin: auto;
+}
+
+.panel__knob-wrapper  {
+  width: 20%;
+  height: 250px;
+  float: left;
+}
+
+.panel__knob  {
+  width: 150px;
+  height: 150px;
+}
+
+.panel__knob-name {
+  font: 500 25px "Source Sans Pro";
+  text-align: left;
+  margin-top: 10px;
+  color: white;
+}
