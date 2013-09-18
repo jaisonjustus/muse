@@ -12,7 +12,18 @@
 
         </div>
         <div class="app__panel-right">
-
+          <fieldset class="panel__equalizer" data-fgColor="#ecf0f1"
+            data-width="360" data-cols="8" data-min="-100" data-max="100">
+              <legend>16 tracks</legend>
+              <input value=90>
+              <input value=40>
+              <input value=-10>
+              <input value=-10>
+              <input value=-20>
+              <input value=-10>
+              <input value=-20>
+              <input value=-10>
+          </fieldset>
         </div>
       </div>
     </div>
@@ -28,12 +39,12 @@
           <input id="treble" type="text" value="20" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
         </div>
         <div class="panel__knob-wrapper">
-          <h3 id="gain" class="panel__knob-name">Gain</h3>
-          <input type="text" value="20" data-max="100" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+          <h3 class="panel__knob-name">Gain</h3>
+          <input id="gain" type="text" value="20" data-max="100" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
         </div>
         <div class="panel__knob-wrapper">
-          <h3 id="distortion" class="panel__knob-name">Distortion</h3>
-          <input type="text" value="0" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
+          <h3 class="panel__knob-name">Distortion</h3>
+          <input id="distortion" type="text" value="0" class="panel__knob" data-width="150" data-fgColor="#16a085" data-skin="tron" data-thickness=".2" data-displayPrevious=true>
         </div>
         <div class="panel__knob-wrapper">
           <h3 class="panel__knob-name">Reverb</h3>
@@ -43,12 +54,14 @@
     </div>
     <script type="text/javascript" src="components/jquery/jquery.js"></script>
     <script type="text/javascript" src="components/jquery-knob/js/jquery.knob.js"></script>
+    <script type="text/javascript" src="components/jquery-kontrol/jquery.kontrol.js"></script>
 
     <script type="text/javascript" src="scripts/muse.js"></script>
 
     <script type="text/javascript">
-     // navigator.webkitGetUserMedia({audio: true}, '');
-     Muse.Player.init();
+
+      // Muse.Guitar.init();
+      // navigator.webkitGetUserMedia({audio: true}, Muse.Guitar.streaming);
     </script>
   </body>
 </html>
