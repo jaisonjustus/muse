@@ -158,33 +158,33 @@ var Equalizer = Muse.Equalizer = {
 
 };
 
-console.log("testing");
+// console.log("testing");
 
-Muse.Equalizer.init([1000,3000,4000,5000,6000]);
+// Muse.Equalizer.init([1000,3000,4000,5000,6000]);
 
-/* Equalizer Testing. */
-var request = new XMLHttpRequest(),
-    sound = {};
+// /* Equalizer Testing. */
+// var request = new XMLHttpRequest(),
+//     sound = {};
 
-sound.source = Muse.Core.context.createBufferSource();
-sound.volume = Muse.Core.context.createGain();
-sound.volume.gain.value = 5;
+// sound.source = Muse.Core.context.createBufferSource();
+// sound.volume = Muse.Core.context.createGain();
+// sound.volume.gain.value = 5;
 
-sound.source.connect(sound.volume);
-sound.volume.connect(Muse.Equalizer.endPoint(true));
-Muse.Equalizer.endPoint(false).connect(Muse.Core.context.destination);
-sound.source.loop = true;
+// sound.source.connect(sound.volume);
+// sound.volume.connect(Muse.Equalizer.endPoint(true));
+// Muse.Equalizer.endPoint(false).connect(Muse.Core.context.destination);
+// sound.source.loop = true;
 
-/* XHR Request to get the sound. */
-request.open("GET", "http://localhost:9000/sounds/bgscore.mp3", true);
-request.responseType = "arraybuffer";
-request.onload = function(e) {
+// /* XHR Request to get the sound. */
+// request.open("GET", "http://localhost:9000/sounds/bgscore.mp3", true);
+// request.responseType = "arraybuffer";
+// request.onload = function(e) {
 
-  var buffer = Muse.Core.context.createBuffer(this.response, false);
-console.log(buffer);
-  sound.buffer = buffer;
-  sound.source.buffer = sound.buffer;
-  sound.source.start(Muse.Core.context.currentTime);
-};
-request.send();
+//   var buffer = Muse.Core.context.createBuffer(this.response, false);
+// console.log(buffer);
+//   sound.buffer = buffer;
+//   sound.source.buffer = sound.buffer;
+//   sound.source.start(Muse.Core.context.currentTime);
+// };
+// request.send();
 
