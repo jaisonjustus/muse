@@ -1,5 +1,13 @@
+/**
+ * Muse Module.
+ * @namespace Muse
+ */
 var Muse = Muse || {};
 
+/**
+ * Filter Module.
+ * @module Filter
+ */
 var Filters = Muse.Filters = {
   'lowpass' : 0,
   'highpass' : 1,
@@ -11,6 +19,10 @@ var Filters = Muse.Filters = {
   'allpass' : 7
 };
 
+/**
+ * Dom Selecter Module.
+ * @module Selector.
+ */
 var Selectors = Muse.Selectors = {
   distortion : $('#distortion'),
   bass : $('#bass'),
@@ -19,6 +31,10 @@ var Selectors = Muse.Selectors = {
   gain : $('#gain')
 };
 
+/**
+ * Core Module.
+ * @module Core
+ */
 var Core = Muse.Core = {
   context : new window.webkitAudioContext(),
 
@@ -57,6 +73,10 @@ var Core = Muse.Core = {
 
 };
 
+/**
+ * Guitar Module.
+ * @module Guitar
+ */
 var Guitar = Muse.Guitar = {
 
   delay : false,
@@ -112,54 +132,6 @@ var Guitar = Muse.Guitar = {
     Muse.Guitar.nodes.treble.connect(Muse.Guitar.nodes.delay);
     Muse.Guitar.nodes.delay.connect(Muse.Guitar.nodes.gain);
     Muse.Guitar.nodes.gain.connect(Muse.Core.context.destination)
-  }
-
-};
-
-var Equalizer = Muse.Equalizer = {
-
-  nodes : [],
-
-  filter : 'bandpass',
-
-  band : [],
-
-  init : function(band) {
-    this.band = band;
-    this.createEquializerNode();
-    this.createEquializer();
-  },
-
-  createEquializerNode : function() {
-    var filter = null;
-
-    for(var i = 0; i < this.band.length; i++)  {
-      filter = Muse.Core.context.createBiquadFilter()
-      filter.type = Muse.Filters[this.filter];
-      filter.frequency.value = this.band[i];
-      filter.Q.value = 1;
-      filter.gain.value = 1;
-
-      this.nodes.push(filter);
-    }
-  },
-
-  createEquializer : function() {
-    for(var i = 0, j = 1; j < this.nodes.length; i++, j++)  {
-      this.nodes[i].connect(this.nodes[j]);
-    }
-  },
-
-  modifyFrequency : function(band, freq)  {
-    this.nodes[band].frequency.value = freq;
-  },
-
-  endPoint : function(start)  {
-    if(start) {
-      return this.nodes[0];
-    }else {
-      return this.nodes[this.nodes.length - 1];
-    }
   }
 
 };
