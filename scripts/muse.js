@@ -59,6 +59,8 @@ var Core = Muse.Core = {
 
 var Guitar = Muse.Guitar = {
 
+  delay : false,
+
   nodes : {
     distortion : Muse.Core.context.createWaveShaper(),
     bass : Muse.Core.createNode('lowshelf', 440, 0, Muse.Selectors.bass),
@@ -86,6 +88,23 @@ var Guitar = Muse.Guitar = {
     Muse.Selectors.treble.dial({'change': function (v) {
       that.nodes.treble.gain.value = v / 100;
     }});
+
+    Muse.Selectors.delay.dial({'change': function (v) {
+      that.nodes.delay.delayTime.value = v/10;
+      // that.nodes.delay.delayTime.value = v;
+    }});
+
+    // $('#delay').click(function()  {
+    //   if(!that.delay)  {
+    //     that.delay = true;
+    //     console.log('delay on');
+    //     that.nodes.delay.delayTime.value = 0.2;
+    //   }else {
+    //     that.delay = false;
+    //     console.log('delay off');
+    //     that.nodes.delay.delayTime.value = 0;
+    //   }
+    // });
   },
 
   init : function() {
@@ -158,6 +177,76 @@ var Equalizer = Muse.Equalizer = {
 
 };
 
+// var Visualizer = Muse.Visualizer = {
+
+//   analyser : Muse.Core.context.createAnalyser(),
+
+//   get : function()  {
+//     return this.analyser;
+//   },
+
+//   init : function() {
+//     this.analyser = Muse.Core.context.createAnalyser();
+//     this.analyser.minDecibels = -140;
+//     this.analyser.maxDecibels = 0;
+//     this.analyser.connect(Muse.Core.context.destination);
+//     this.frequencyDomain = new Uint8Array(this.analyser.frequencyBinCount);
+//     this.timeDomain = new Uint8Array(this.analyser.frequencyBinCount);
+
+//     requestAnimFrame(this.draw.bind(this));
+//   },
+
+//   draw : function() {
+
+//     console.log("draw");
+
+//     this.analyser.smoothingTimeConstant = 0.8;
+//     this.analyser.fftSize = 2048;
+
+//     this.analyser.getByteFrequencyData(this.frequencyDomain);
+//     this.analyser.getByteTimeDomainData(this.timeDomain);
+
+//     var width = Math.floor(1/this.frequencyDomain.length, 10);
+// console.log(width);
+//     var canvas = document.querySelector('canvas');
+
+//     // console.log(canvas);
+
+//     var drawContext = canvas.getContext('2d');
+
+//     canvas.width = 640;
+//     canvas.height = 320;
+
+//     for (var i = 0; i < this.analyser.frequencyBinCount; i++) {
+//       var value = this.frequencyDomain[i];
+//       var percent = value / 256;
+//       var height = 320 * percent;
+//       var offset = 320 - height - 1;
+//       var barWidth = 640/this.analyser.frequencyBinCount;
+//       var hue = i/this.analyser.frequencyBinCount * 360;
+//       drawContext.fillStyle = 'hsl(' + hue + ', 100%, 50%)';
+//       drawContext.fillRect(i * barWidth, offset, barWidth, height);
+//       // console.log(value);
+//     }
+
+//     // for (var i = 0; i < this.analyser.frequencyBinCount; i++) {
+//     //   var value = this.timeDomain[i];
+//     //   var percent = value / 256;
+//     //   var height = 320 * percent;
+//     //   var offset = 320 - height - 1;
+//     //   var barWidth = 640/this.analyser.frequencyBinCount;
+//     //   drawContext.fillStyle = 'white';
+//     //   drawContext.fillRect(i * barWidth, offset, 1, 2);
+//     // }
+
+//     // if (this.isPlaying) {
+//       requestAnimFrame(this.draw.bind(this));
+//     // }
+//   }
+
+// };
+
+
 // console.log("testing");
 
 // Muse.Equalizer.init([1000,3000,4000,5000,6000]);
@@ -181,10 +270,11 @@ var Equalizer = Muse.Equalizer = {
 // request.onload = function(e) {
 
 //   var buffer = Muse.Core.context.createBuffer(this.response, false);
-// console.log(buffer);
 //   sound.buffer = buffer;
 //   sound.source.buffer = sound.buffer;
 //   sound.source.start(Muse.Core.context.currentTime);
+
+//   Muse.Visualizer.init();
 // };
 // request.send();
 
